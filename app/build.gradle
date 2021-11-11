@@ -3,6 +3,10 @@ plugins {
     id 'kotlin-android'
 }
 
+ext {
+    sourceCompatibility = VERSION_1_8
+}
+
 android {
     compileSdkVersion 31
     buildToolsVersion '31.0.0'
