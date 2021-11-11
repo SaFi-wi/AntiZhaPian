@@ -1,0 +1,16 @@
+*.iml
+.idea/
+/captures
+.externalNativeBuild
+.cxx
+
+# Gradle files
+.gradle/
+build/
+
+# 本地配置文件 (sdk path, etc)
+local.properties
+
+# system ignore
+.DS_Store
+Thumbs.db
