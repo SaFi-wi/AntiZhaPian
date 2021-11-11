@@ -4,6 +4,7 @@
 
     <application
         android:allowBackup="true"
+        android:fullBackupContent="true"
         android:icon="@drawable/icon"
         android:roundIcon="@drawable/icon"
         android:supportsRtl="true"
@@ -11,7 +12,8 @@
         android:theme="@style/Theme.国家反诈中心">
         <activity
             android:name=".WelcomeActivity"
-            android:screenOrientation="portrait">
+            android:screenOrientation="portrait"
+            android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
