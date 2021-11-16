@@ -182,7 +182,7 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="30dp"
             android:gravity="center"
-            android:text="版本：1.0.3" />
+            android:text="版本：1.0.4" />
 
         <TextView
             android:id="@+id/textView2"
@@ -190,7 +190,7 @@
             android:layout_height="wrap_content"
             android:gravity="center"
             android:autoLink="web"
-            android:text="https://github.com/XJP-GIT/AntiZhaPian" />
+            android:text="https://github.com/bigmao1/AntiZhaPian" />
     </LinearLayout>
 
 </androidx.constraintlayout.widget.ConstraintLayout>
