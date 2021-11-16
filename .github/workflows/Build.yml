@@ -1,0 +1,64 @@
+name: Build CI
+
+on:
+  push:
+    branches: [ master ]
+    paths-ignore:
+      - '**.md'
+  pull_request:
+    branches: [ master ]
+    paths-ignore:
+      - '**.md'
+
+jobs:
+ check:
+    runs-on: ubuntu-latest
+    steps:
+      - name: "Check access"
+        uses: "lannonbr/repo-permission-check-action@2.0.0"
+        with:
+          permission: "write"
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          
+ build:
+    runs-on: ubuntu-latest
+    steps:
+    - name: Checkout last commit
+      uses: actions/checkout@v2
+    
+    - name: set up JDK 11
+      uses: actions/setup-java@v2
+      with:
+        java-version: '11'
+        distribution: 'adopt'
+        cache: gradle
+        
+    - name: Setup Kotlin
+      # You may pin to the exact commit or the version.
+      # uses: fwilhe2/setup-kotlin@f5c4ad2f991043954a8c5d6b9d69fbed78e3eba6
+      uses: fwilhe2/setup-kotlin@0.2.0
+      with:
+       # Version of the compiler to download, if not provided a default value is used.
+       version: 1.5.31
+       # Install Kotlin/Native tool chain (not needed for compiling jvm programs).
+       install-native: # optional
+       # Script to execute, if so desired. If not provided, no script is executed and Kotlin cli tools can be used in subsequent steps.
+       script: # optional
+
+    - name: Setup Android SDK
+      uses: android-actions/setup-android@v2
+
+    - name: Grant execute permission for gradlew
+      run: chmod +x gradlew
+      
+    - name: Build with Gradle
+      run: ./gradlew assembleRelease
+      
+    - name: Upload APK
+      uses: actions/upload-artifact@v2
+      with:
+        name: AntiZhaPian-dev
+        path: app/build/outputs/apk/**/*.apk
+        # keep 90 days
+        retention-days: 90
