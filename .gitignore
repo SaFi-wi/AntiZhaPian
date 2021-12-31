@@ -4,9 +4,22 @@
 .externalNativeBuild
 .cxx
 
+# built application files
+*.apk
+*.ap_
+
+# files for the dex VM
+*.dex
+
+# Java class files
+*.class
+
 # Gradle files
 .gradle/
 build/
+
+# Proguard README
+proguard-project.txt
 
 # 本地配置文件 (sdk path, etc)
 local.properties
